@@ -424,3 +424,57 @@ input:checked + .slider::before {
   flex-shrink: 0;
   transform: scale(0.95);
 }
+
+/* Summary page */
+
+.summary-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.summary-section {
+  background-color: var(--card-color);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.summary-section-title {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  text-transform: capitalize;
+}
+
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.summary-key {
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  text-align: left;
+  width: 40%;
+  color: var(--foreground-color);
+}
+
+.summary-value {
+  padding: 0.5rem 1rem;
+  text-align: left;
+  color: var(--muted-foreground);
+  word-break: break-word;
+}
+
+.success-text {
+  color: #4caf50;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.error-text {
+  color: var(--error-color);
+  margin-top: 1rem;
+  font-size: 1rem;
+}

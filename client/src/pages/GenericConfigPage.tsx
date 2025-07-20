@@ -4,6 +4,7 @@ import { useConfig } from "../context/useConfig";
 import { configSections } from "../config/sections";
 import type { Config } from "../config/Config";
 import Tooltip from "../components/Tooltip";
+import axios from "axios";
 
 const GenericConfigPage = () => {
   const { sectionKey } = useParams();
@@ -48,6 +49,37 @@ const GenericConfigPage = () => {
     const newIndex = direction === "next" ? currentIndex + 1 : currentIndex - 1;
     const nextSection = configSections[newIndex];
     navigate(nextSection.path);
+  };
+
+  const handleFinish = async () => {
+    const missingFields: Record<string, boolean> = {};
+
+    section.fields.forEach((field) => {
+      const value = sectionData[field.key as keyof typeof sectionData];
+      if (field.required && (value === "" || value === undefined)) {
+        missingFields[field.key] = true;
+      }
+    });
+
+    if (Object.keys(missingFields).length > 0) {
+      setErrors(missingFields);
+
+      const firstMissingKey = Object.keys(missingFields)[0];
+      inputRefs.current[firstMissingKey]?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+      inputRefs.current[firstMissingKey]?.focus();
+      return;
+    }
+
+    try {
+      await axios.post("http://localhost:5000/api/config", config);
+    } catch (err) {
+      console.warn("Backend not running or failed:", err);
+    }
+
+    navigate("/summary");
   };
 
   const handleChange = (fieldKey: string, rawValue: string | boolean) => {
@@ -147,12 +179,16 @@ const GenericConfigPage = () => {
             Back
           </button>
         )}
-        {!isLast && (
+        {!isLast ? (
           <button
             className="nav-button next-button"
             onClick={() => handleNavigation("next")}
           >
             Next
+          </button>
+        ) : (
+          <button className="nav-button finish-button" onClick={handleFinish}>
+            Finish
           </button>
         )}
       </div>
