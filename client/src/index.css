@@ -405,3 +405,22 @@ input:checked + .slider::before {
 .slider.round {
   border-radius: 26px;
 }
+
+.form-field-boolean {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 400px;
+}
+
+.form-field-boolean .field-label {
+  margin: 0;
+  font-size: 1rem;
+  flex-grow: 1;
+}
+
+.form-field-boolean .switch {
+  flex-shrink: 0;
+  transform: scale(0.95);
+}

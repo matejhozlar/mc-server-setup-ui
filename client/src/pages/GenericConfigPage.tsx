@@ -86,7 +86,12 @@ const GenericConfigPage = () => {
           const error = errors[field.key];
 
           return (
-            <div key={field.key} className="form-field">
+            <div
+              key={field.key}
+              className={`form-field ${
+                field.type === "boolean" ? "form-field-boolean" : ""
+              }`}
+            >
               <label htmlFor={field.key} className="field-label">
                 <span className="label-wrapper">
                   <Tooltip text={field.tooltip || "No description available"} />
