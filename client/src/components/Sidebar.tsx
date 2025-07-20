@@ -1,44 +1,30 @@
-import React from "react";
+import { NavLink } from "react-router-dom";
 
-const sections = ["General", "Design", "Advanced"];
+const sections = [
+  { label: "General", path: "/general" },
+  { label: "Design", path: "/design" },
+];
 
 const Sidebar = () => {
   return (
-    <aside
-      style={{
-        width: "200px",
-        position: "sticky",
-        top: "100px",
-        height: "calc(100vh - 100px)",
-        backgroundColor: "#eaeaea",
-        padding: "20px",
-        boxSizing: "border-box",
-        borderRight: "1px solid #ccc",
-        overflowY: "auto",
-      }}
-    >
-      <nav>
-        <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-          {sections.map((section) => (
-            <li key={section} style={{ marginBottom: "10px" }}>
-              <button
-                style={{
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  fontSize: "16px",
-                  textAlign: "left",
-                  width: "100%",
-                }}
-                onClick={() => alert(`Go to ${section}`)}
+    <div className="sidebar">
+      <nav className="sidebar-nav">
+        <ul className="nav-list">
+          {sections.map(({ label, path }) => (
+            <li key={path} className="nav-item">
+              <NavLink
+                to={path}
+                className={({ isActive }) =>
+                  `nav-link${isActive ? " active" : ""}`
+                }
               >
-                {section}
-              </button>
+                {label}
+              </NavLink>
             </li>
           ))}
         </ul>
       </nav>
-    </aside>
+    </div>
   );
 };
 
