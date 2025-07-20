@@ -3,6 +3,7 @@ export interface GeneralConfig {
   ipAddress: string;
   serverPort: number;
 }
+
 export interface FeaturesConfig {
   adminPanel: boolean;
 }

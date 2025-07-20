@@ -5,4 +5,5 @@ export type ConfigField = {
   required: boolean;
   defaultValue?: string | number;
   placeholder?: string;
+  tooltip: string;
 };

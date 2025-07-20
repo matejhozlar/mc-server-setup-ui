@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useConfig } from "../context/useConfig";
 import { configSections } from "../config/sections";
 import type { Config } from "../config/Config";
+import Tooltip from "../components/Tooltip";
 
 const GenericConfigPage = () => {
   const { sectionKey } = useParams();
@@ -87,7 +88,8 @@ const GenericConfigPage = () => {
           return (
             <div key={field.key} className="form-field">
               <label htmlFor={field.key} className="field-label">
-                <span>
+                <span className="label-wrapper">
+                  <Tooltip text={field.tooltip || "No description available"} />
                   {field.label}
                   {field.required && (
                     <span className="required-asterisk">*</span>

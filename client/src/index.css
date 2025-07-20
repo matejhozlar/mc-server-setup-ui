@@ -226,6 +226,41 @@ html {
   padding: 20px;
 }
 
+/* Tooltips */
+
+.tooltip-icon {
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+  font-size: 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  line-height: 1;
+  user-select: none;
+  cursor: pointer;
+}
+
+.floating-tooltip {
+  position: absolute;
+  z-index: 99999;
+  background-color: #222;
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  white-space: normal;
+  max-width: 220px;
+  width: max-content;
+  word-break: break-word;
+  text-align: left;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transform: translateX(-50%);
+}
+
 /* Generic Config Page */
 
 .config-page {
@@ -262,7 +297,7 @@ html {
 }
 
 .required-asterisk {
-  color: red;
+  color: var(--error-color);
   margin-left: 0.25rem;
 }
 

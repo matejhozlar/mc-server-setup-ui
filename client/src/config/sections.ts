@@ -18,6 +18,7 @@ export const configSections: {
         required: true,
         defaultValue: "",
         placeholder: "e.g. My Minecraft Server",
+        tooltip: "The name of your Minecraft Server",
       },
       {
         key: "ipAddress",
@@ -26,6 +27,7 @@ export const configSections: {
         required: true,
         defaultValue: "",
         placeholder: "127.0.0.1",
+        tooltip: "IP Address of your Minecraft Server",
       },
       {
         key: "port",
@@ -34,6 +36,7 @@ export const configSections: {
         required: true,
         defaultValue: 25565,
         placeholder: "25565",
+        tooltip: "The port of your Minecraft server",
       },
     ],
   },
@@ -49,6 +52,8 @@ export const configSections: {
         required: false,
         defaultValue: "",
         placeholder: "",
+        tooltip:
+          "This adds an Admin Panel for you or your Admins to use. !You will also need to fill in the credentials section for this to work properly!",
       },
     ],
   },
@@ -64,6 +69,7 @@ export const configSections: {
         required: false,
         defaultValue: "dark",
         placeholder: "light | dark",
+        tooltip: "Type of your website",
       },
       {
         key: "fontSize",
@@ -72,6 +78,7 @@ export const configSections: {
         required: false,
         defaultValue: 14,
         placeholder: "14",
+        tooltip: "Default fontsize for your website",
       },
     ],
   },
