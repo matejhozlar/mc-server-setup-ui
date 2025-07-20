@@ -1,18 +1,8 @@
 import { useState } from "react";
 import type { ReactNode } from "react";
-import type { Config } from "../types/Config";
+import type { Config } from "../config/Config";
 import { ConfigContext } from "./ConfigContext";
-
-const defaultConfig: Config = {
-  general: {
-    appName: "",
-    version: "",
-  },
-  design: {
-    theme: "light",
-    fontSize: 14,
-  },
-};
+import { defaultConfig } from "../config/Config";
 
 export const ConfigProvider = ({ children }: { children: ReactNode }) => {
   const [config, setConfig] = useState<Config>(defaultConfig);

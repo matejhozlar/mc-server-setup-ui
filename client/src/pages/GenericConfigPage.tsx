@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useConfig } from "../context/useConfig.ts";
 import { configSections } from "../config/sections.ts";
-import type { Config } from "../types/Config.ts";
+import type { Config } from "../config/Config.ts";
 
 const GenericConfigPage = () => {
   const { sectionKey } = useParams();
