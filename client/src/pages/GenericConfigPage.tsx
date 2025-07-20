@@ -49,16 +49,17 @@ const GenericConfigPage = () => {
     navigate(nextSection.path);
   };
 
-  const handleChange = (fieldKey: string, rawValue: string) => {
+  const handleChange = (fieldKey: string, rawValue: string | boolean) => {
     const field = section.fields.find((f) => f.key === fieldKey);
     if (!field) return;
 
-    const newValue =
-      field.type === "number"
-        ? rawValue === ""
-          ? ""
-          : Number(rawValue)
-        : rawValue;
+    let newValue: string | number | boolean = rawValue;
+
+    if (field.type === "number") {
+      newValue = rawValue === "" ? "" : Number(rawValue);
+    } else if (field.type === "boolean") {
+      newValue = Boolean(rawValue);
+    }
 
     const updatedSection: typeof sectionData = {
       ...sectionData,
@@ -67,7 +68,6 @@ const GenericConfigPage = () => {
 
     updateConfig(key, updatedSection);
 
-    // Clear error on input
     if (errors[fieldKey]) {
       setErrors((prev) => {
         const updated = { ...prev };
@@ -95,18 +95,34 @@ const GenericConfigPage = () => {
                 </span>
               </label>
 
-              <input
-                id={field.key}
-                ref={(el) => {
-                  inputRefs.current[field.key] = el;
-                }}
-                type={field.type}
-                required={field.required}
-                value={sectionData[field.key as keyof typeof sectionData] ?? ""}
-                placeholder={field.placeholder ?? ""}
-                onChange={(e) => handleChange(field.key, e.target.value)}
-                className={`config-input ${error ? "input-error" : ""}`}
-              />
+              {field.type === "boolean" ? (
+                <label className="switch">
+                  <input
+                    type="checkbox"
+                    checked={Boolean(
+                      sectionData[field.key as keyof typeof sectionData]
+                    )}
+                    onChange={(e) => handleChange(field.key, e.target.checked)}
+                  />
+                  <span className="slider round" />
+                </label>
+              ) : (
+                <input
+                  id={field.key}
+                  ref={(el) => {
+                    inputRefs.current[field.key] = el;
+                  }}
+                  type={field.type}
+                  required={field.required}
+                  value={
+                    sectionData[field.key as keyof typeof sectionData] ?? ""
+                  }
+                  placeholder={field.placeholder ?? ""}
+                  onChange={(e) => handleChange(field.key, e.target.value)}
+                  className={`config-input ${error ? "input-error" : ""}`}
+                />
+              )}
+
               {error && (
                 <div className="error-text">This field is required.</div>
               )}

@@ -3,6 +3,9 @@ export interface GeneralConfig {
   ipAddress: string;
   serverPort: number;
 }
+export interface FeaturesConfig {
+  adminPanel: boolean;
+}
 
 export interface DesignConfig {
   theme: string;
@@ -11,6 +14,7 @@ export interface DesignConfig {
 
 export interface Config {
   general: GeneralConfig;
+  features: FeaturesConfig;
   design: DesignConfig;
 }
 
@@ -19,6 +23,9 @@ export const defaultConfig: Config = {
     serverName: "",
     ipAddress: "",
     serverPort: 25565,
+  },
+  features: {
+    adminPanel: false,
   },
   design: {
     theme: "light",

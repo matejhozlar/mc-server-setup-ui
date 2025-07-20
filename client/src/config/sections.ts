@@ -38,6 +38,21 @@ export const configSections: {
     ],
   },
   {
+    key: "features",
+    label: "Features",
+    path: "/features",
+    fields: [
+      {
+        key: "adminPanel",
+        label: "Admin Panel",
+        type: "boolean",
+        required: false,
+        defaultValue: "",
+        placeholder: "",
+      },
+    ],
+  },
+  {
     key: "design",
     label: "Design",
     path: "/design",
