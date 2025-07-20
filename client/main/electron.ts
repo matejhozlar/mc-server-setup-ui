@@ -15,9 +15,12 @@ const createWindow = () => {
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       nodeIntegration: true,
-      contextIsolation: false, // For simplicity; can be hardened later
+      contextIsolation: false,
     },
   });
+
+  mainWindow.setMenuBarVisibility(false);
+  mainWindow.removeMenu();
 
   const url = isDev
     ? "http://localhost:5173"

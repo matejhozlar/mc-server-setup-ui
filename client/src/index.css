@@ -82,6 +82,14 @@ html {
   overflow-x: hidden;
 }
 
+* {
+  box-sizing: border-box;
+  border-color: var(--border-color);
+  margin: 0;
+  padding: 0;
+  cursor: url("./assets/cursors/sword.cur") 0 0, auto !important;
+}
+
 /* Header */
 
 .header {
@@ -172,5 +180,4 @@ html {
   flex: 1;
   overflow-y: auto;
   padding: 20px;
-  background-color: #fff;
 }

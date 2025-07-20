@@ -1,5 +1,5 @@
 function GeneralConfigPage() {
-  return <div>GeneralConfigPage</div>;
+  return <div className="test">GeneralConfigPage</div>;
 }
 
 export default GeneralConfigPage;
