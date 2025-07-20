@@ -37,6 +37,7 @@ const GenericConfigPage = () => {
                 type={field.type}
                 required={field.required}
                 value={sectionData[field.key as FieldKey] ?? ""}
+                placeholder={field.placeholder ?? ""}
                 onChange={(e) => {
                   const newValue =
                     field.type === "number"

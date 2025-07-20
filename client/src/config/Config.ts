@@ -1,6 +1,7 @@
 export interface GeneralConfig {
-  appName: string;
-  version: string;
+  serverName: string;
+  ipAddress: string;
+  serverPort: number;
 }
 
 export interface DesignConfig {
@@ -15,8 +16,9 @@ export interface Config {
 
 export const defaultConfig: Config = {
   general: {
-    appName: "",
-    version: "",
+    serverName: "",
+    ipAddress: "",
+    serverPort: 25565,
   },
   design: {
     theme: "light",
