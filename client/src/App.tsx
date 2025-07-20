@@ -1,8 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ConfigProvider } from "./context/ConfigProvider.tsx";
 import Layout from "./layout/Layout.tsx";
-import GeneralConfigPage from "./pages/GeneralConfigPage.tsx";
-import DesignConfigPage from "./pages/DesignConfigPage.tsx";
+import GenericConfigPage from "./pages/GenericConfigPage.tsx";
 
 function App() {
   return (
@@ -11,8 +10,7 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<Navigate to="/general" />} />
-            <Route path="/general" element={<GeneralConfigPage />} />
-            <Route path="/design" element={<DesignConfigPage />} />
+            <Route path="/:sectionKey" element={<GenericConfigPage />} />
           </Routes>
         </Layout>
       </BrowserRouter>
