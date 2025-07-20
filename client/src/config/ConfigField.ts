@@ -3,7 +3,6 @@ export type ConfigField = {
   label: string;
   type: "text" | "number" | "boolean";
   required: boolean;
-  defaultValue?: string | number;
   placeholder?: string;
   tooltip: string;
 };

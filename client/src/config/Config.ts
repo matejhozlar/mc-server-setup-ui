@@ -8,13 +8,19 @@ export interface FeaturesConfig {
   adminPanel: boolean;
 }
 
+export interface CredentialsConfig {
+  rconPort: number | null;
+  rconPassword: string | null;
+}
+
 export interface DesignConfig {
-  theme: string;
-  fontSize: number;
+  theme: string | null;
+  fontSize: number | null;
 }
 
 export interface Config {
   general: GeneralConfig;
+  credentials: CredentialsConfig;
   features: FeaturesConfig;
   design: DesignConfig;
 }
@@ -28,8 +34,12 @@ export const defaultConfig: Config = {
   features: {
     adminPanel: false,
   },
+  credentials: {
+    rconPort: null,
+    rconPassword: null,
+  },
   design: {
-    theme: "light",
-    fontSize: 14,
+    theme: null,
+    fontSize: null,
   },
 };
