@@ -30,7 +30,7 @@ export const configSections: {
         tooltip: "IP Address of your Minecraft Server",
       },
       {
-        key: "port",
+        key: "serverPort",
         label: "Server Port",
         type: "number",
         required: true,

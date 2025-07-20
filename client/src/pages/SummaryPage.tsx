@@ -10,7 +10,7 @@ const SummaryPage = () => {
   const handleFinish = async () => {
     setStatus("loading");
     try {
-      const response = await fetch("http://localhost:5000/config", {
+      const response = await fetch("http://localhost:5000/api/config", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

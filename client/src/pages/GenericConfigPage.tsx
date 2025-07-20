@@ -4,7 +4,6 @@ import { useConfig } from "../context/useConfig";
 import { configSections } from "../config/sections";
 import type { Config } from "../config/Config";
 import Tooltip from "../components/Tooltip";
-import axios from "axios";
 
 const GenericConfigPage = () => {
   const { sectionKey } = useParams();
@@ -51,7 +50,7 @@ const GenericConfigPage = () => {
     navigate(nextSection.path);
   };
 
-  const handleFinish = async () => {
+  const handleFinish = () => {
     const missingFields: Record<string, boolean> = {};
 
     section.fields.forEach((field) => {
@@ -71,12 +70,6 @@ const GenericConfigPage = () => {
       });
       inputRefs.current[firstMissingKey]?.focus();
       return;
-    }
-
-    try {
-      await axios.post("http://localhost:5000/api/config", config);
-    } catch (err) {
-      console.warn("Backend not running or failed:", err);
     }
 
     navigate("/summary");
